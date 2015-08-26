@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.unito</groupId>
+  <artifactId>Applications</artifactId>
+  <version>2.1.2</version>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source/>
+          <target/>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>it.zero11</groupId>
+      <artifactId>microsim-core</artifactId>
+      <version>2.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>it.zero11</groupId>
+      <artifactId>microsim-gui</artifactId>
+      <version>2.1.2</version>
+    </dependency>    
+  </dependencies>
+  
+  <repositories>
+    <repository>
+      <id>microsim</id>
+      <name>Microsim</name>
+      <url>http://jaslibrary.sourceforge.net/maven</url>
+    </repository>
+  </repositories>  
+</project>
