@@ -10,6 +10,7 @@ import it.zero11.microsim.engine.SimulationEngine;
 import it.zero11.microsim.engine.SimulationManager;
 import it.zero11.microsim.event.EventGroup;
 import it.zero11.microsim.event.EventListener;
+import it.zero11.microsim.event.SingleTargetEvent;
 import it.zero11.microsim.event.SystemEventType;
 import it.zero11.microsim.statistics.CrossSection;
 import it.zero11.microsim.statistics.functions.MeanArrayFunction;
@@ -27,9 +28,8 @@ public class ApplicationsCollector extends AbstractSimulationCollectorManager im
 //	public MultiTraceFunction.Integer fTraceWorkerPerVacancyNumber;
 	public MultiTraceFunction.Double fTraceUnemployedPerVacancyNumber;
 
-	public ApplicationsCollector(SimulationManager manager) {
-		super(manager);
-		SimulationEngine.getInstance().addEngineListener(this);
+	public ApplicationsCollector(SimulationManager model) {
+		super(model);
 	}
 
 	public enum Processes {
@@ -54,8 +54,8 @@ public class ApplicationsCollector extends AbstractSimulationCollectorManager im
 		EventGroup eventGroup = new EventGroup();
 		eventGroup.addEvent(this, Processes.Update);
 		eventGroup.addEvent(this, Processes.DumpPeriodicInfo);
-		getEngine().getEventList().schedule(eventGroup, 0, 1);							
-	
+		getEngine().getEventList().schedule(eventGroup, 0, 1);	
+		getEngine().getEventList().schedule(new SingleTargetEvent(this, Processes.DumpOneOffInfo),((ApplicationsModel) getManager()).getEndTime()-1);
 	}
 	
 	public void onEvent(Enum<?> type) {

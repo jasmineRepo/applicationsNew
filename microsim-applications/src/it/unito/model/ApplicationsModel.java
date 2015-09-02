@@ -5,6 +5,8 @@ import it.zero11.microsim.engine.AbstractSimulationManager;
 import it.zero11.microsim.event.EventGroup;
 import it.zero11.microsim.event.EventListener;
 import it.zero11.microsim.event.SingleTargetEvent;
+import it.zero11.microsim.event.SystemEvent;
+import it.zero11.microsim.event.SystemEventType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,7 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 	
 	public enum Processes {
 		OpenVacancies,
-		PrintJobQueues,
-		Stop,
+		PrintJobQueues;
 	}
 	
 	// Stop
@@ -67,8 +68,8 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 //		eventGroup.addEvent(this, Processes.PrintJobQueues);
 
 		getEngine().getEventList().schedule(eventGroup, 0, 1);
-		getEngine().getEventList().schedule(new SingleTargetEvent(this, Processes.Stop), endTime);
-	
+//		getEngine().getEventList().schedule(new SingleTargetEvent(this, Processes.End), endTime);
+		getEngine().getEventList().scheduleSystem(endTime, 0, getEngine(), SystemEventType.Stop);
 	}
 	
 	public void onEvent(Enum<?> type) {
@@ -84,10 +85,6 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 			
 		case PrintJobQueues:
 			printAvgJobQueue();
-			break;
-			
-		case Stop:
-			getEngine().pause();
 			break;
 		
 		}

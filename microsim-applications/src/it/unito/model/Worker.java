@@ -103,7 +103,7 @@ public class Worker implements EventListener {
 	}
 	
 	public int getEmployedAsInt() {
-		return (employed ? 1 : 0);
+		return (employed ? 1 : 0) * 100;
 	}
 
 	public List<Application> getWorkerApplicationList() {
