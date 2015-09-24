@@ -63,10 +63,9 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 		// all workers apply because all workers are reset to unemployed at the beginning of the period
 		eventGroup.addCollectionEvent(workerList, Worker.Processes.Apply);
 		eventGroup.addCollectionEvent(openVacancyList, Vacancy.Processes.Select, false);
-//		eventGroup.addEvent(this, Processes.PrintJobQueues);
+//		eventGroup.addEvent(this, Processes.PrintJobQueues);			//Do not comment out, if you want a numerical printout of the average job queue 
 
 		getEngine().getEventList().schedule(eventGroup, 0, 1);
-//		getEngine().getEventList().schedule(new SingleTargetEvent(this, Processes.End), endTime);
 		getEngine().getEventList().scheduleSystem(endTime, 0, getEngine(), SystemEventType.Stop);
 	}
 	
@@ -95,7 +94,7 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 			avgJobQueue += vac.getVacancyApplicationListSize();
 		}
 		avgJobQueue /= (double)openVacancyList.size();
-		System.out.println(avgJobQueue);
+		System.out.println("Average Job Queue is " + avgJobQueue);
 		
 	}
 
