@@ -66,15 +66,15 @@ public class Worker implements EventListener {
 		int j = firstVacancySampled;
 		while ( applicationsSent < model.getApplicationsPerPeriod() ) {
 			Vacancy vacancy = model.getOpenVacancyList().get(j);
-			boolean hasAlreadyApplied = false;
+//			boolean hasAlreadyApplied = false;		//Can prevent applying twice for the same job
 			for (Application application : workerApplicationList) {
 				if (application.getVacancyId() == vacancy.getId()) {
-					hasAlreadyApplied = true;
+//					hasAlreadyApplied = true;
 					break;
 				}
 			}
 			
-//			if (! hasAlreadyApplied) {		//Is this the reason for Buckingham Pi not to scale with number of applications per worker per time?
+//			if (! hasAlreadyApplied) {		//Can prevent applying twice for the same job if not commented out
 				Application application = new Application(this, vacancy);
 				workerApplicationList.add(application); // the application itself notifies its existence to the model
 				applicationsSent ++;

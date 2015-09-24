@@ -1,6 +1,5 @@
 package it.unito.experiment;
 
-import it.unito.model.ApplicationsModel;
 import it.zero11.microsim.engine.AbstractSimulationObserverManager;
 import it.zero11.microsim.engine.SimulationCollectorManager;
 import it.zero11.microsim.engine.SimulationManager;
@@ -9,7 +8,6 @@ import it.zero11.microsim.event.EventGroup;
 import it.zero11.microsim.event.EventListener;
 import it.zero11.microsim.gui.GuiUtils;
 import it.zero11.microsim.gui.plot.TimeSeriesSimulationPlotter;
-import it.zero11.microsim.statistics.IDoubleSource;
 import it.zero11.microsim.statistics.IIntSource;
 
 import org.apache.log4j.Logger;
@@ -18,7 +16,7 @@ public class ApplicationsObserver extends AbstractSimulationObserverManager impl
 
 	private final static Logger log = Logger.getLogger(ApplicationsObserver.class);
 
-	private TimeSeriesSimulationPlotter queuesPlotter, employedPlotter, vacancyPlotter, workersPerVacancyPlotter, unemployedPerVacancyPlotter;
+	private TimeSeriesSimulationPlotter queuesPlotter, employedPlotter, vacancyPlotter, unemployedPerVacancyPlotter;//, workersPerVacancyPlotter;
 	
 	public ApplicationsObserver(SimulationManager manager, SimulationCollectorManager collectorManager) {
 		super(manager, collectorManager);
@@ -28,7 +26,7 @@ public class ApplicationsObserver extends AbstractSimulationObserverManager impl
 	}
 
 	public void buildObjects() {
-		final ApplicationsModel model = (ApplicationsModel) getManager();
+//		final ApplicationsModel model = (ApplicationsModel) getManager();
 		final ApplicationsCollector collector = (ApplicationsCollector) getCollectorManager();
 		
 		queuesPlotter = new TimeSeriesSimulationPlotter("job queues", "#");

@@ -72,7 +72,6 @@ public class Vacancy implements EventListener {
 		Collections.shuffle(vacancyApplicationList);
 
 		// hire first applicant still on the market
-		int i = 0;
 		for (Application application : vacancyApplicationList) {
 			if ( application.getOutcome().equals(ApplicationOutcome.StillOpen) ) {
 				if (hiredWorkerId == null) {

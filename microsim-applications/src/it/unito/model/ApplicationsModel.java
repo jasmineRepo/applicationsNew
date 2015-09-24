@@ -4,8 +4,6 @@ import it.zero11.microsim.annotation.ModelParameter;
 import it.zero11.microsim.engine.AbstractSimulationManager;
 import it.zero11.microsim.event.EventGroup;
 import it.zero11.microsim.event.EventListener;
-import it.zero11.microsim.event.SingleTargetEvent;
-import it.zero11.microsim.event.SystemEvent;
 import it.zero11.microsim.event.SystemEventType;
 
 import java.util.ArrayList;

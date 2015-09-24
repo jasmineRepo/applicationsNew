@@ -1,7 +1,5 @@
 package it.unito.model;
 
-import java.util.Iterator;
-
 import it.unito.model.enums.ApplicationOutcome;
 import it.zero11.microsim.data.db.PanelEntityKey;
 import it.zero11.microsim.engine.SimulationEngine;
