@@ -1,10 +1,11 @@
 package it.unito.model;
 
-import it.zero11.microsim.annotation.ModelParameter;
-import it.zero11.microsim.engine.AbstractSimulationManager;
-import it.zero11.microsim.event.EventGroup;
-import it.zero11.microsim.event.EventListener;
-import it.zero11.microsim.event.SystemEventType;
+import microsim.annotation.ModelParameter;
+import microsim.engine.AbstractSimulationManager;
+import microsim.event.EventGroup;
+import microsim.event.EventListener;
+import microsim.event.Order;
+import microsim.event.SystemEventType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +66,8 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 		eventGroup.addCollectionEvent(openVacancyList, Vacancy.Processes.Select, false);
 //		eventGroup.addEvent(this, Processes.PrintJobQueues);			//Do not comment out, if you want a numerical printout of the average job queue 
 
-		getEngine().getEventList().schedule(eventGroup, 0, 1);
-		getEngine().getEventList().scheduleSystem(endTime, 0, getEngine(), SystemEventType.Stop);
+		getEngine().getEventList().scheduleRepeat(eventGroup, 0., 0, 1.);
+		getEngine().getEventList().scheduleSystem(endTime, Order.AFTER_ALL.getOrdering(), 0., getEngine(), SystemEventType.Stop);
 	}
 	
 	public void onEvent(Enum<?> type) {

@@ -1,14 +1,15 @@
 package it.unito.experiment;
 
-import it.zero11.microsim.engine.AbstractSimulationObserverManager;
-import it.zero11.microsim.engine.SimulationCollectorManager;
-import it.zero11.microsim.engine.SimulationManager;
-import it.zero11.microsim.event.CommonEventType;
-import it.zero11.microsim.event.EventGroup;
-import it.zero11.microsim.event.EventListener;
-import it.zero11.microsim.gui.GuiUtils;
-import it.zero11.microsim.gui.plot.TimeSeriesSimulationPlotter;
-import it.zero11.microsim.statistics.IIntSource;
+import microsim.engine.AbstractSimulationObserverManager;
+import microsim.engine.SimulationCollectorManager;
+import microsim.engine.SimulationManager;
+import microsim.event.CommonEventType;
+import microsim.event.EventGroup;
+import microsim.event.EventListener;
+import microsim.event.Order;
+import microsim.gui.GuiUtils;
+import microsim.gui.plot.TimeSeriesSimulationPlotter;
+import microsim.statistics.IIntSource;
 
 import org.apache.log4j.Logger;
 
@@ -62,7 +63,7 @@ public class ApplicationsObserver extends AbstractSimulationObserverManager impl
 		eventGroup.addEvent(vacancyPlotter, CommonEventType.Update);
 //		eventGroup.addEvent(workersPerVacancyPlotter, CommonEventType.Update);
 		eventGroup.addEvent(unemployedPerVacancyPlotter, CommonEventType.Update);
-		getEngine().getEventList().schedule(eventGroup, 0, 1);
+		getEngine().getEventList().scheduleRepeat(eventGroup, 0., Order.AFTER_ALL.getOrdering()-1, 1.);
 						
 		log.debug("Observer schedule created");
 		}

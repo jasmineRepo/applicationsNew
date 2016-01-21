@@ -1,8 +1,8 @@
 package it.unito.model;
 
 import it.unito.model.enums.ApplicationOutcome;
-import it.zero11.microsim.data.db.PanelEntityKey;
-import it.zero11.microsim.engine.SimulationEngine;
+import microsim.data.db.PanelEntityKey;
+import microsim.engine.SimulationEngine;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +46,7 @@ public class Application {
 		setWorker(worker);
 		setVacancy(vacancy);
 		this.vacancy = vacancy;
-		dateOpened = SimulationEngine.getInstance().getTime();
+		dateOpened = (long)SimulationEngine.getInstance().getTime();
 		outcome = ApplicationOutcome.StillOpen;
 		vacancy.addApplication(this);
 		model = (ApplicationsModel) SimulationEngine.getInstance().getManager(ApplicationsModel.class.getCanonicalName());
@@ -55,20 +55,20 @@ public class Application {
 	
 	public void notifySuccessful() {
 		outcome = ApplicationOutcome.Successful;
-		dateClosed = SimulationEngine.getInstance().getTime();
+		dateClosed = (long)SimulationEngine.getInstance().getTime();
 		worker.setEmployed(true);
 		
 		// notify all other vacancies involved that the worker is not on the market anymore
 		for (Application application : worker.getWorkerApplicationList()) 
 			if (! application.equals(this) && application.getOutcome().equals(ApplicationOutcome.StillOpen)) {
 				application.setOutcome(ApplicationOutcome.FoundOtherJob);
-				application.setDateClosed( SimulationEngine.getInstance().getTime() );
+				application.setDateClosed( (long)SimulationEngine.getInstance().getTime() );
 			}
 	}
 	
 	public void notifyUnsuccessful() {
 		outcome = ApplicationOutcome.Unsuccesful;
-		dateClosed = SimulationEngine.getInstance().getTime();
+		dateClosed = (long)SimulationEngine.getInstance().getTime();
 	}
 	
 	public long getDateOpened() {

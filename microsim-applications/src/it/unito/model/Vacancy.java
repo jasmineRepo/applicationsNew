@@ -1,9 +1,9 @@
 package it.unito.model;
 
 import it.unito.model.enums.ApplicationOutcome;
-import it.zero11.microsim.data.db.PanelEntityKey;
-import it.zero11.microsim.engine.SimulationEngine;
-import it.zero11.microsim.event.EventListener;
+import microsim.data.db.PanelEntityKey;
+import microsim.engine.SimulationEngine;
+import microsim.event.EventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +43,7 @@ public class Vacancy implements EventListener {
 		model = (ApplicationsModel) SimulationEngine.getInstance().getManager(ApplicationsModel.class.getCanonicalName());
 		id = new PanelEntityKey();
 		id.setId((long) idCounter++);
-		dateOpened = SimulationEngine.getInstance().getTime();
+		dateOpened = (long)SimulationEngine.getInstance().getTime();
 		hiredWorkerId = null;
 		vacancyApplicationList = new ArrayList<Application>();
 	}
@@ -82,7 +82,7 @@ public class Vacancy implements EventListener {
 			}
 		}
 
-		dateClosed = SimulationEngine.getInstance().getTime();
+		dateClosed = (long)SimulationEngine.getInstance().getTime();
 		model.getOpenVacancyList().remove(this);
 	}
 

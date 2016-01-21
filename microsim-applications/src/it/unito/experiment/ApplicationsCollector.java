@@ -3,18 +3,19 @@ package it.unito.experiment;
 import it.unito.model.ApplicationsModel;
 import it.unito.model.Vacancy;
 import it.unito.model.Worker;
-import it.zero11.microsim.data.db.DatabaseUtils;
-import it.zero11.microsim.engine.AbstractSimulationCollectorManager;
-import it.zero11.microsim.engine.EngineListener;
-import it.zero11.microsim.engine.SimulationEngine;
-import it.zero11.microsim.engine.SimulationManager;
-import it.zero11.microsim.event.EventGroup;
-import it.zero11.microsim.event.EventListener;
-import it.zero11.microsim.event.SingleTargetEvent;
-import it.zero11.microsim.event.SystemEventType;
-import it.zero11.microsim.statistics.CrossSection;
-import it.zero11.microsim.statistics.functions.MeanArrayFunction;
-import it.zero11.microsim.statistics.functions.MultiTraceFunction;
+import microsim.data.db.DatabaseUtils;
+import microsim.engine.AbstractSimulationCollectorManager;
+import microsim.engine.EngineListener;
+import microsim.engine.SimulationEngine;
+import microsim.engine.SimulationManager;
+import microsim.event.EventGroup;
+import microsim.event.EventListener;
+import microsim.event.Order;
+import microsim.event.SingleTargetEvent;
+import microsim.event.SystemEventType;
+import microsim.statistics.CrossSection;
+import microsim.statistics.functions.MeanArrayFunction;
+import microsim.statistics.functions.MultiTraceFunction;
 
 import org.apache.log4j.Logger;
 
@@ -54,8 +55,8 @@ public class ApplicationsCollector extends AbstractSimulationCollectorManager im
 		EventGroup eventGroup = new EventGroup();
 		eventGroup.addEvent(this, Processes.Update);
 		eventGroup.addEvent(this, Processes.DumpPeriodicInfo);
-		getEngine().getEventList().schedule(eventGroup, 0, 1);	
-		getEngine().getEventList().schedule(new SingleTargetEvent(this, Processes.DumpOneOffInfo),((ApplicationsModel) getManager()).getEndTime()-1);
+		getEngine().getEventList().scheduleRepeat(eventGroup, 0., Order.AFTER_ALL.getOrdering()-1, 1.);	
+		getEngine().getEventList().scheduleOnce(new SingleTargetEvent(this, Processes.DumpOneOffInfo),((ApplicationsModel) getManager()).getEndTime(), Order.AFTER_ALL.getOrdering()-1);
 	}
 	
 	public void onEvent(Enum<?> type) {

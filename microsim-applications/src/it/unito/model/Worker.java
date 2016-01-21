@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import it.zero11.microsim.data.db.PanelEntityKey;
-import it.zero11.microsim.engine.SimulationEngine;
-import it.zero11.microsim.event.EventListener;
+import microsim.data.db.PanelEntityKey;
+import microsim.engine.SimulationEngine;
+import microsim.event.EventListener;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
