@@ -1,5 +1,6 @@
 # applicationsNew
 Microsim-applications by Matteo Richiardi and Michele Sonnessa (2014) 
+Update to make compatible with JAS-mine by Ross Richardson (2016)
 
 The main() method is in the ApplicationsStart.java class in the it.unito.experiment package.  
 Run this class as a Java Application, and the JAS-mine GUI will launch.
