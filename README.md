@@ -11,4 +11,4 @@ Run this class as a Java Application, and the JAS-mine GUI will launch.
 To build the simulation, click on the 'Build simulation model' button (the second from the left), which should bring up some empty charts. 
 To run the simulation, click on the 'Start simulation' button, which is the next button on the right. 
 
-For more information on this simulation, see https://sites.google.com/site/jasminesimulation/demo/applications
+For more information on this simulation, see http://www.jas-mine.net/demo/applications
