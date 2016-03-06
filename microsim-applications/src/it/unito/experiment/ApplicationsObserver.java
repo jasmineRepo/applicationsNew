@@ -9,6 +9,7 @@ import microsim.event.EventListener;
 import microsim.event.Order;
 import microsim.gui.GuiUtils;
 import microsim.gui.plot.TimeSeriesSimulationPlotter;
+import microsim.statistics.IDoubleSource;
 import microsim.statistics.IIntSource;
 
 import org.apache.log4j.Logger;
@@ -50,7 +51,7 @@ public class ApplicationsObserver extends AbstractSimulationObserverManager impl
 //		GuiUtils.addWindow(workersPerVacancyPlotter, 1450, 0, 400, 400);
 
 		unemployedPerVacancyPlotter = new TimeSeriesSimulationPlotter("unemployed per vacancy", "#");
-		unemployedPerVacancyPlotter.addSeries("", collector.fTraceUnemployedPerVacancyNumber, IIntSource.Variables.Default);
+		unemployedPerVacancyPlotter.addSeries("", collector.fTraceUnemployedPerVacancyNumber, IDoubleSource.Variables.Default);
 		GuiUtils.addWindow(unemployedPerVacancyPlotter, 1450, 0, 400, 400);
 		
 	}
