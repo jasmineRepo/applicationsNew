@@ -1,6 +1,6 @@
 package it.unito.model;
 
-import microsim.annotation.ModelParameter;
+import microsim.annotation.GUIparameter;
 import microsim.engine.AbstractSimulationManager;
 import microsim.event.EventGroup;
 import microsim.event.EventListener;
@@ -26,21 +26,21 @@ public class ApplicationsModel extends AbstractSimulationManager implements Even
 	}
 	
 	// Stop
-	@ModelParameter
+	@GUIparameter
 	private Integer endTime = 100;
 
 	// Vacancies
-	@ModelParameter
+	@GUIparameter
 	private Integer vacancyDuration = 30;
 
-	@ModelParameter
+	@GUIparameter
 	private Integer newVacanciesPerPeriod = 30;
 	
 	// Workers
-	@ModelParameter
+	@GUIparameter
 	private Integer nWorkers = 1000;
 	
-	@ModelParameter
+	@GUIparameter
 	private Integer applicationsPerPeriod = 1;
 	
 	public void buildObjects() {
