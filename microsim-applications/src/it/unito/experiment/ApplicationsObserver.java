@@ -64,7 +64,7 @@ public class ApplicationsObserver extends AbstractSimulationObserverManager impl
 		eventGroup.addEvent(vacancyPlotter, CommonEventType.Update);
 //		eventGroup.addEvent(workersPerVacancyPlotter, CommonEventType.Update);
 		eventGroup.addEvent(unemployedPerVacancyPlotter, CommonEventType.Update);
-		getEngine().getEventList().scheduleRepeat(eventGroup, 0., Order.AFTER_ALL.getOrdering()-1, 1.);
+		getEngine().getEventQueue().scheduleRepeat(eventGroup, 0., Order.AFTER_ALL.getOrdering()-1, 1.);
 						
 		log.debug("Observer schedule created");
 		}

@@ -55,8 +55,8 @@ public class ApplicationsCollector extends AbstractSimulationCollectorManager im
 		EventGroup eventGroup = new EventGroup();
 		eventGroup.addEvent(this, Processes.Update);
 		eventGroup.addEvent(this, Processes.DumpPeriodicInfo);
-		getEngine().getEventList().scheduleRepeat(eventGroup, 0., Order.AFTER_ALL.getOrdering()-1, 1.);	
-		getEngine().getEventList().scheduleOnce(new SingleTargetEvent(this, Processes.DumpOneOffInfo),((ApplicationsModel) getManager()).getEndTime(), Order.AFTER_ALL.getOrdering()-1);
+		getEngine().getEventQueue().scheduleRepeat(eventGroup, 0., Order.AFTER_ALL.getOrdering()-1, 1.);	
+		getEngine().getEventQueue().scheduleOnce(new SingleTargetEvent(this, Processes.DumpOneOffInfo),((ApplicationsModel) getManager()).getEndTime(), Order.AFTER_ALL.getOrdering()-1);
 	}
 	
 	public void onEvent(Enum<?> type) {
